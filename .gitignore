@@ -4,3 +4,6 @@
 *.exe
 
 *.mdb
+
+MultiPlexChecker/obj
+MultiPlexChecker/bin
