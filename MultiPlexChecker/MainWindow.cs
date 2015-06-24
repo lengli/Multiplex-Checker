@@ -12,6 +12,7 @@ public partial class MainWindow: Gtk.Window
 	{
 		Build ();
 		nSpecLbl.Text = "";
+		FileNameLbl.Text = "";
 		openAct.Activated += OpenFileEvent;
 		mtpxCombo.Changed += MtpxChanged;
 		runBtn.Clicked += RunClicked;
@@ -81,7 +82,7 @@ public partial class MainWindow: Gtk.Window
 					}
 					for(int j = 0; j < intensities.Count; j++)
 					{
-						if(j % 3 == 0)
+						if(j % 4 == 0)
 							info += "\n  ";
 						info += intensities[j].ToString("0.00") + "(" + charges[j].ToString() + ")/";									
 					}
@@ -109,7 +110,8 @@ public partial class MainWindow: Gtk.Window
 		{
 			ms1 = new Ms1 (filechooser.Filename);
 			ms1.Run ();
-			nSpecLbl.Text = "n. of spectrum: " + ms1.Spectra.Count.ToString();
+			nSpecLbl.Text = ms1.Spectra.Count.ToString();
+			FileNameLbl.Text = filechooser.Filename;
 		}
 
 		filechooser.Destroy();
