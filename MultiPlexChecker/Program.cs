@@ -7,7 +7,7 @@ namespace MultiPlexChecker
 	class MainClass
 	{
 		// Probability tester
-		public static void Main (string[] args)
+		public static void Main1 (string[] args)
 		{
 			Application.Init ();
 			MainWindow win = new MainWindow();
@@ -58,28 +58,22 @@ namespace MultiPlexChecker
 			Application.Run ();
 		}
 
-		public static void Main1 (string[] args)
+		public static void Main (string[] args)
 		{
 			Application.Init ();
 			MainWindow win = new MainWindow();
 			win.Title = "Ms1 Analyzer";
 
-			Ms1 ms1 = new Ms1 ("121_Cornua_d2_1ul.ms1");
-			//Ms1 ms1 = new Ms1 ("0.29 - 301.1012.ms1");
+			//Ms1 ms1 = new Ms1 ("121_Cornua_d2_1ul.ms1");
+			Ms1 ms1 = new Ms1 ("0.29 - 301.1012.ms1");
 			ms1.Run ();
 
-			Label lbl = new Label ();
-			lbl.Text = "n. of spectrum: " + ms1.Spectra.Count.ToString();
+			win.SetNumbSpectLbl("n. of spectrum: " + ms1.Spectra.Count.ToString());
 
-			Label infoLbl = new Label ();
-			Label retTimeLbl = new Label ();
-			HBox infoBox = new HBox ();
-			infoBox.Add (infoLbl);
-			VBox info2Box = new VBox ();
-			infoBox.Add (info2Box);
-			info2Box.Add (retTimeLbl);
+			Label infoLbl = win.InfoLbl();
+			Label retTimeLbl = win.RetLbl();
 
-			ComboBox mtpxCombo = ComboBox.NewText();
+			ComboBox mtpxCombo = win.MtpxCombo();
 			ListStore mtpxItems = new ListStore (typeof(string));
 			mtpxCombo.Model = mtpxItems;
 			mtpxCombo.Changed += (object sender, EventArgs e) => 
@@ -87,14 +81,11 @@ namespace MultiPlexChecker
 				ComboBox combo = sender as ComboBox;
 				int index = int.Parse(combo.ActiveText);
 				Spectrum sp = ms1.Spectra[index];
-				infoLbl.Text = "Info: " + sp.info;
-				retTimeLbl.Text = "Retention Time: " + sp.RetTime.ToString();
+				infoLbl.Text = sp.info;
+				retTimeLbl.Text = sp.RetTime.ToString();
 			};
 
-			Button btn = new Button ();
-			Style btnStyle = new Style ();
-			btn.Style = btnStyle;
-			btn.Clicked += (o, a) => 
+			win.RunBtn().Clicked += (o, a) => 
 			{
 				//(mtpxCombo.Model as ListStore).Clear();
 				for(int i = 0; i < ms1.Spectra.Count; i++)
@@ -154,23 +145,6 @@ namespace MultiPlexChecker
 				}
 			};
 
-			Label btnLbl = new Label ("Run");
-			btn.Add (btnLbl);
-
-			HBox hBox = new HBox ();
-			VBox vComboBox = new VBox ();
-			vComboBox.Add (new Label ("Scan index:"));
-			vComboBox.Add (mtpxCombo);
-			hBox.Add (new Label ("Multiplex analysis"));
-			hBox.Add (vComboBox);
-
-			VBox vBox = new VBox ();
-			vBox.Add (lbl);
-			vBox.Add (btn);
-			vBox.Add (hBox);
-			vBox.Add (infoBox);
-
-			win.Add (vBox);
 			win.ShowAll ();
 			Application.Run ();
 		}
