@@ -246,7 +246,6 @@ public partial class MainWindow
 		w23.X = 20;
 		w23.Y = 265;
 		// Container child fixed1.Gtk.Fixed+FixedChild
-		//this.UIManager.AddUiFromString("<ui><menubar name='menubar1'><menu><menuitem/></menu><menu/></menubar></ui>");
 		this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='FileAction' action='FileAction'><menuitem name='openAct' action='openAct'/></menu><menu name='AboutAction' action='AboutAction'/></menubar></ui>");
 		this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/menubar1")));
 		this.menubar1.WidthRequest = 683;
