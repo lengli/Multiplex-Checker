@@ -25,6 +25,12 @@
         <property name="ShortLabel" translatable="yes">Open MS1 File</property>
         <property name="StockId">gtk-open</property>
       </action>
+      <action id="openAct">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes">Open File</property>
+        <property name="ShortLabel" translatable="yes">Open File</property>
+        <property name="StockId">gtk-open</property>
+      </action>
     </action-group>
     <property name="MemberName" />
     <property name="Title" translatable="yes">MainWindow</property>
@@ -143,7 +149,7 @@
             <property name="WidthRequest">683</property>
             <node name="__gtksharp_156_Stetic_Editor_ActionMenuBar" type="Menubar">
               <node type="Menu" action="FileAction">
-                <node type="Menuitem" action="openAction" />
+                <node type="Menuitem" action="openAct" />
               </node>
               <node type="Menu" action="AboutAction" />
             </node>
