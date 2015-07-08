@@ -13,6 +13,7 @@ public partial class MainWindow: Gtk.Window
 		Build ();
 		nSpecLbl.Text = "";
 		FileNameLbl.Text = "";
+		ErrorLbl.Text = "";
 		openAct.Activated += OpenFileEvent;
 		mtpxCombo.Changed += MtpxChanged;
 		runBtn.Clicked += RunClicked;
