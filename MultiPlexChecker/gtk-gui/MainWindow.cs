@@ -133,17 +133,17 @@ public partial class MainWindow
 		// Container child fixed2.Gtk.Fixed+FixedChild
 		this.FileNameLbl = new global::Gtk.Label ();
 		this.FileNameLbl.Name = "FileNameLbl";
-		this.FileNameLbl.LabelProp = global::Mono.Unix.Catalog.GetString("label4");
-		this.fixed2.Add(this.FileNameLbl);
-		global::Gtk.Fixed.FixedChild w7 = ((global::Gtk.Fixed.FixedChild)(this.fixed2[this.FileNameLbl]));
-		w7.X = 110;
+		this.FileNameLbl.LabelProp = global::Mono.Unix.Catalog.GetString ("label4");
+		this.fixed2.Add (this.FileNameLbl);
+		global::Gtk.Fixed.FixedChild w8 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.FileNameLbl]));
+		w8.X = 110;
 		// Container child fixed2.Gtk.Fixed+FixedChild
 		this.label6 = new global::Gtk.Label ();
 		this.label6.Name = "label6";
-		this.label6.LabelProp = global::Mono.Unix.Catalog.GetString("N. of Top Peaks:");
-		this.fixed2.Add(this.label6);
-		global::Gtk.Fixed.FixedChild w8 = ((global::Gtk.Fixed.FixedChild)(this.fixed2[this.label6]));
-		w8.Y = 90;
+		this.label6.LabelProp = global::Mono.Unix.Catalog.GetString ("N. of Top Peaks:");
+		this.fixed2.Add (this.label6);
+		global::Gtk.Fixed.FixedChild w9 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.label6]));
+		w9.Y = 90;
 		// Container child fixed2.Gtk.Fixed+FixedChild
 		this.label7 = new global::Gtk.Label ();
 		this.label7.Name = "label7";
@@ -170,15 +170,15 @@ public partial class MainWindow
 		// Container child fixed2.Gtk.Fixed+FixedChild
 		this.label10 = new global::Gtk.Label ();
 		this.label10.Name = "label10";
-		this.label10.LabelProp = global::Mono.Unix.Catalog.GetString("Left Size:");
-		this.fixed2.Add(this.label10);
-		global::Gtk.Fixed.FixedChild w12 = ((global::Gtk.Fixed.FixedChild)(this.fixed2[this.label10]));
-		w12.X = 360;
-		w12.Y = 30;
-		this.fixed1.Add(this.fixed2);
-		global::Gtk.Fixed.FixedChild w13 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.fixed2]));
-		w13.X = 20;
-		w13.Y = 35;
+		this.label10.LabelProp = global::Mono.Unix.Catalog.GetString ("Left Size:");
+		this.fixed2.Add (this.label10);
+		global::Gtk.Fixed.FixedChild w13 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.label10]));
+		w13.X = 410;
+		w13.Y = 30;
+		this.fixed1.Add (this.fixed2);
+		global::Gtk.Fixed.FixedChild w20 = ((global::Gtk.Fixed.FixedChild)(this.fixed1 [this.fixed2]));
+		w20.X = 20;
+		w20.Y = 35;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.fixed3 = new global::Gtk.Fixed ();
 		this.fixed3.WidthRequest = 500;
