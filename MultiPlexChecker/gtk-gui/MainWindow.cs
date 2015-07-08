@@ -97,8 +97,10 @@ public partial class MainWindow
 		this.BorderWidth = ((uint)(3));
 		// Container child MainWindow.Gtk.Container+ContainerChild
 		this.fixed1 = new global::Gtk.Fixed ();
+		this.fixed1.Name = "fixed1";
 		this.fixed1.HasWindow = false;
 		// Container child fixed1.Gtk.Fixed+FixedChild
+		this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='FileAction' action='FileAction'><menuitem name='openAct' action='openAct'/></menu><menu name='AboutAction' action='AboutAction'/></menubar></ui>");
 		this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/menubar1")));
 		this.menubar1.WidthRequest = 683;
 		this.menubar1.Name = "menubar1";
@@ -325,7 +327,6 @@ public partial class MainWindow
 		w30.X = 20;
 		w30.Y = 265;
 		// Container child fixed1.Gtk.Fixed+FixedChild
-		this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='FileAction' action='FileAction'><menuitem name='openAct' action='openAct'/></menu><menu name='AboutAction' action='AboutAction'/></menubar></ui>");
 		this.hseparator1 = new global::Gtk.HSeparator ();
 		this.hseparator1.WidthRequest = 660;
 		this.hseparator1.Name = "hseparator1";

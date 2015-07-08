@@ -10,10 +10,13 @@ public partial class MainWindow: Gtk.Window
 
 	public MainWindow () : base (Gtk.WindowType.Toplevel)
 	{
+		//this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='FileAction' action='FileAction'><menuitem name='openAct' action='openAct'/></menu><menu name='AboutAction' action='AboutAction'/></menubar></ui>");
 		Build ();
 		nSpecLbl.Text = "";
 		FileNameLbl.Text = "";
 		ErrorLbl.Text = "";
+
+
 		openAct.Activated += OpenFileEvent;
 		mtpxCombo.Changed += MtpxChanged;
 		runBtn.Clicked += RunClicked;
