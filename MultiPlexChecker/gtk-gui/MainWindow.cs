@@ -41,6 +41,18 @@ public partial class MainWindow
 	
 	private global::Gtk.Label label10;
 	
+	private global::Gtk.Entry entry1;
+	
+	private global::Gtk.Entry entry2;
+	
+	private global::Gtk.Entry entry3;
+	
+	private global::Gtk.CheckButton checkbutton1;
+	
+	private global::Gtk.Entry entry4;
+	
+	private global::Gtk.Label ErrorLbl;
+	
 	private global::Gtk.Fixed fixed3;
 	
 	private global::Gtk.Label indexLbl;
@@ -175,6 +187,69 @@ public partial class MainWindow
 		global::Gtk.Fixed.FixedChild w13 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.label10]));
 		w13.X = 410;
 		w13.Y = 30;
+		// Container child fixed2.Gtk.Fixed+FixedChild
+		this.entry1 = new global::Gtk.Entry ();
+		this.entry1.WidthRequest = 100;
+		this.entry1.CanFocus = true;
+		this.entry1.Name = "entry1";
+		this.entry1.IsEditable = true;
+		this.entry1.InvisibleChar = '●';
+		this.fixed2.Add (this.entry1);
+		global::Gtk.Fixed.FixedChild w14 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.entry1]));
+		w14.X = 110;
+		w14.Y = 55;
+		// Container child fixed2.Gtk.Fixed+FixedChild
+		this.entry2 = new global::Gtk.Entry ();
+		this.entry2.WidthRequest = 100;
+		this.entry2.CanFocus = true;
+		this.entry2.Name = "entry2";
+		this.entry2.IsEditable = true;
+		this.entry2.InvisibleChar = '●';
+		this.fixed2.Add (this.entry2);
+		global::Gtk.Fixed.FixedChild w15 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.entry2]));
+		w15.X = 110;
+		w15.Y = 115;
+		// Container child fixed2.Gtk.Fixed+FixedChild
+		this.entry3 = new global::Gtk.Entry ();
+		this.entry3.WidthRequest = 100;
+		this.entry3.CanFocus = true;
+		this.entry3.Name = "entry3";
+		this.entry3.IsEditable = true;
+		this.entry3.InvisibleChar = '●';
+		this.fixed2.Add (this.entry3);
+		global::Gtk.Fixed.FixedChild w16 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.entry3]));
+		w16.X = 480;
+		w16.Y = 55;
+		// Container child fixed2.Gtk.Fixed+FixedChild
+		this.checkbutton1 = new global::Gtk.CheckButton ();
+		this.checkbutton1.CanFocus = true;
+		this.checkbutton1.Name = "checkbutton1";
+		this.checkbutton1.Label = "";
+		this.checkbutton1.DrawIndicator = true;
+		this.checkbutton1.UseUnderline = true;
+		this.fixed2.Add (this.checkbutton1);
+		global::Gtk.Fixed.FixedChild w17 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.checkbutton1]));
+		w17.X = 110;
+		w17.Y = 89;
+		// Container child fixed2.Gtk.Fixed+FixedChild
+		this.entry4 = new global::Gtk.Entry ();
+		this.entry4.WidthRequest = 100;
+		this.entry4.CanFocus = true;
+		this.entry4.Name = "entry4";
+		this.entry4.IsEditable = true;
+		this.entry4.InvisibleChar = '●';
+		this.fixed2.Add (this.entry4);
+		global::Gtk.Fixed.FixedChild w18 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.entry4]));
+		w18.X = 480;
+		w18.Y = 25;
+		// Container child fixed2.Gtk.Fixed+FixedChild
+		this.ErrorLbl = new global::Gtk.Label ();
+		this.ErrorLbl.Name = "ErrorLbl";
+		this.ErrorLbl.LabelProp = global::Mono.Unix.Catalog.GetString ("ErrorLbl");
+		this.fixed2.Add (this.ErrorLbl);
+		global::Gtk.Fixed.FixedChild w19 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.ErrorLbl]));
+		w19.X = 50;
+		w19.Y = 159;
 		this.fixed1.Add (this.fixed2);
 		global::Gtk.Fixed.FixedChild w20 = ((global::Gtk.Fixed.FixedChild)(this.fixed1 [this.fixed2]));
 		w20.X = 20;
