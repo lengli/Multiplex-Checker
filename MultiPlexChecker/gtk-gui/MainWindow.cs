@@ -216,35 +216,35 @@ public partial class MainWindow
 		global::Gtk.Viewport w17 = new global::Gtk.Viewport();
 		w17.ShadowType = ((global::Gtk.ShadowType)(0));
 		// Container child GtkViewport.Gtk.Container+ContainerChild
-		this.infoLbl = new global::Gtk.Label();
+		this.infoLbl = new global::Gtk.Label ();
 		this.infoLbl.Name = "infoLbl";
 		this.infoLbl.Xalign = 0.04F;
 		this.infoLbl.Yalign = 0.04F;
-		this.infoLbl.LabelProp = global::Mono.Unix.Catalog.GetString("-");
-		w17.Add(this.infoLbl);
-		this.scrolledwindow1.Add(w17);
-		this.fixed3.Add(this.scrolledwindow1);
-		global::Gtk.Fixed.FixedChild w20 = ((global::Gtk.Fixed.FixedChild)(this.fixed3[this.scrolledwindow1]));
-		w20.Y = 107;
+		this.infoLbl.LabelProp = global::Mono.Unix.Catalog.GetString ("-");
+		w24.Add (this.infoLbl);
+		this.scrolledwindow1.Add (w24);
+		this.fixed3.Add (this.scrolledwindow1);
+		global::Gtk.Fixed.FixedChild w27 = ((global::Gtk.Fixed.FixedChild)(this.fixed3 [this.scrolledwindow1]));
+		w27.Y = 107;
 		// Container child fixed3.Gtk.Fixed+FixedChild
-		this.label5 = new global::Gtk.Label();
+		this.label5 = new global::Gtk.Label ();
 		this.label5.Name = "label5";
-		this.label5.LabelProp = global::Mono.Unix.Catalog.GetString("Retention Time: ");
-		this.fixed3.Add(this.label5);
-		global::Gtk.Fixed.FixedChild w21 = ((global::Gtk.Fixed.FixedChild)(this.fixed3[this.label5]));
-		w21.Y = 50;
+		this.label5.LabelProp = global::Mono.Unix.Catalog.GetString ("Retention Time: ");
+		this.fixed3.Add (this.label5);
+		global::Gtk.Fixed.FixedChild w28 = ((global::Gtk.Fixed.FixedChild)(this.fixed3 [this.label5]));
+		w28.Y = 50;
 		// Container child fixed3.Gtk.Fixed+FixedChild
-		this.retLbl = new global::Gtk.Label();
+		this.retLbl = new global::Gtk.Label ();
 		this.retLbl.Name = "retLbl";
-		this.retLbl.LabelProp = global::Mono.Unix.Catalog.GetString("-");
-		this.fixed3.Add(this.retLbl);
-		global::Gtk.Fixed.FixedChild w22 = ((global::Gtk.Fixed.FixedChild)(this.fixed3[this.retLbl]));
-		w22.X = 99;
-		w22.Y = 50;
-		this.fixed1.Add(this.fixed3);
-		global::Gtk.Fixed.FixedChild w23 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.fixed3]));
-		w23.X = 20;
-		w23.Y = 265;
+		this.retLbl.LabelProp = global::Mono.Unix.Catalog.GetString ("-");
+		this.fixed3.Add (this.retLbl);
+		global::Gtk.Fixed.FixedChild w29 = ((global::Gtk.Fixed.FixedChild)(this.fixed3 [this.retLbl]));
+		w29.X = 99;
+		w29.Y = 50;
+		this.fixed1.Add (this.fixed3);
+		global::Gtk.Fixed.FixedChild w30 = ((global::Gtk.Fixed.FixedChild)(this.fixed1 [this.fixed3]));
+		w30.X = 20;
+		w30.Y = 265;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='FileAction' action='FileAction'><menuitem name='openAct' action='openAct'/></menu><menu name='AboutAction' action='AboutAction'/></menubar></ui>");
 		this.menubar1 = ((global::Gtk.MenuBar)(this.UIManager.GetWidget ("/menubar1")));
@@ -254,10 +254,10 @@ public partial class MainWindow
 		this.hseparator1 = new global::Gtk.HSeparator();
 		this.hseparator1.WidthRequest = 660;
 		this.hseparator1.Name = "hseparator1";
-		this.fixed1.Add(this.hseparator1);
-		global::Gtk.Fixed.FixedChild w24 = ((global::Gtk.Fixed.FixedChild)(this.fixed1[this.hseparator1]));
-		w24.X = 20;
-		w24.Y = 240;
+		this.fixed1.Add (this.hseparator1);
+		global::Gtk.Fixed.FixedChild w31 = ((global::Gtk.Fixed.FixedChild)(this.fixed1 [this.hseparator1]));
+		w31.X = 20;
+		w31.Y = 240;
 		this.Add (this.fixed1);
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();
