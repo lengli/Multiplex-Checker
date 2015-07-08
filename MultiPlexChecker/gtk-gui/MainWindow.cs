@@ -103,7 +103,7 @@ public partial class MainWindow
 		global::Gtk.Fixed.FixedChild w2 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.runBtn]));
 		w2.Y = 150;
 		// Container child fixed2.Gtk.Fixed+FixedChild
-		this.nSpecLbl = new global::Gtk.Label();
+		this.nSpecLbl = new global::Gtk.Label ();
 		this.nSpecLbl.Name = "nSpecLbl";
 		this.nSpecLbl.Xalign = 0F;
 		this.nSpecLbl.LabelProp = global::Mono.Unix.Catalog.GetString("nSpec");
@@ -119,7 +119,7 @@ public partial class MainWindow
 		global::Gtk.Fixed.FixedChild w4 = ((global::Gtk.Fixed.FixedChild)(this.fixed2[this.label1]));
 		w4.Y = 60;
 		// Container child fixed2.Gtk.Fixed+FixedChild
-		this.label2 = new global::Gtk.Label();
+		this.label2 = new global::Gtk.Label ();
 		this.label2.Name = "label2";
 		this.label2.LabelProp = global::Mono.Unix.Catalog.GetString("Filename:");
 		this.fixed2.Add(this.label2);
@@ -145,7 +145,7 @@ public partial class MainWindow
 		global::Gtk.Fixed.FixedChild w8 = ((global::Gtk.Fixed.FixedChild)(this.fixed2[this.label6]));
 		w8.Y = 90;
 		// Container child fixed2.Gtk.Fixed+FixedChild
-		this.label7 = new global::Gtk.Label();
+		this.label7 = new global::Gtk.Label ();
 		this.label7.Name = "label7";
 		this.label7.LabelProp = global::Mono.Unix.Catalog.GetString("Window");
 		this.fixed2.Add(this.label7);
@@ -262,7 +262,7 @@ public partial class MainWindow
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();
 		}
-		this.DefaultWidth = 706;
+		this.DefaultWidth = 800;
 		this.DefaultHeight = 700;
 		this.Show ();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
