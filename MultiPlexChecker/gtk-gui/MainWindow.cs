@@ -88,7 +88,7 @@ public partial class MainWindow
 		this.fixed1.Name = "fixed1";
 		this.fixed1.HasWindow = false;
 		// Container child fixed1.Gtk.Fixed+FixedChild
-		this.fixed2 = new global::Gtk.Fixed();
+		this.fixed2 = new global::Gtk.Fixed ();
 		this.fixed2.WidthRequest = 600;
 		this.fixed2.HeightRequest = 210;
 		this.fixed2.Name = "fixed2";
@@ -100,38 +100,38 @@ public partial class MainWindow
 		this.runBtn.UseUnderline = true;
 		this.runBtn.Label = global::Mono.Unix.Catalog.GetString ("Run");
 		this.fixed2.Add (this.runBtn);
-		global::Gtk.Fixed.FixedChild w2 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.runBtn]));
-		w2.Y = 150;
+		global::Gtk.Fixed.FixedChild w3 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.runBtn]));
+		w3.Y = 150;
 		// Container child fixed2.Gtk.Fixed+FixedChild
 		this.nSpecLbl = new global::Gtk.Label ();
 		this.nSpecLbl.Name = "nSpecLbl";
 		this.nSpecLbl.Xalign = 0F;
-		this.nSpecLbl.LabelProp = global::Mono.Unix.Catalog.GetString("nSpec");
-		this.fixed2.Add(this.nSpecLbl);
-		global::Gtk.Fixed.FixedChild w3 = ((global::Gtk.Fixed.FixedChild)(this.fixed2[this.nSpecLbl]));
-		w3.X = 110;
-		w3.Y = 30;
+		this.nSpecLbl.LabelProp = global::Mono.Unix.Catalog.GetString ("nSpec");
+		this.fixed2.Add (this.nSpecLbl);
+		global::Gtk.Fixed.FixedChild w4 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.nSpecLbl]));
+		w4.X = 110;
+		w4.Y = 30;
 		// Container child fixed2.Gtk.Fixed+FixedChild
-		this.label1 = new global::Gtk.Label();
+		this.label1 = new global::Gtk.Label ();
 		this.label1.Name = "label1";
-		this.label1.LabelProp = global::Mono.Unix.Catalog.GetString("Threshold:");
-		this.fixed2.Add(this.label1);
-		global::Gtk.Fixed.FixedChild w4 = ((global::Gtk.Fixed.FixedChild)(this.fixed2[this.label1]));
-		w4.Y = 60;
+		this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("Threshold:");
+		this.fixed2.Add (this.label1);
+		global::Gtk.Fixed.FixedChild w5 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.label1]));
+		w5.Y = 60;
 		// Container child fixed2.Gtk.Fixed+FixedChild
 		this.label2 = new global::Gtk.Label ();
 		this.label2.Name = "label2";
-		this.label2.LabelProp = global::Mono.Unix.Catalog.GetString("Filename:");
-		this.fixed2.Add(this.label2);
+		this.label2.LabelProp = global::Mono.Unix.Catalog.GetString ("Filename:");
+		this.fixed2.Add (this.label2);
 		// Container child fixed2.Gtk.Fixed+FixedChild
-		this.label4 = new global::Gtk.Label();
+		this.label4 = new global::Gtk.Label ();
 		this.label4.Name = "label4";
-		this.label4.LabelProp = global::Mono.Unix.Catalog.GetString("N. of Spectrum:");
-		this.fixed2.Add(this.label4);
-		global::Gtk.Fixed.FixedChild w6 = ((global::Gtk.Fixed.FixedChild)(this.fixed2[this.label4]));
-		w6.Y = 30;
+		this.label4.LabelProp = global::Mono.Unix.Catalog.GetString ("N. of Spectrum:");
+		this.fixed2.Add (this.label4);
+		global::Gtk.Fixed.FixedChild w7 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.label4]));
+		w7.Y = 30;
 		// Container child fixed2.Gtk.Fixed+FixedChild
-		this.FileNameLbl = new global::Gtk.Label();
+		this.FileNameLbl = new global::Gtk.Label ();
 		this.FileNameLbl.Name = "FileNameLbl";
 		this.FileNameLbl.LabelProp = global::Mono.Unix.Catalog.GetString("label4");
 		this.fixed2.Add(this.FileNameLbl);
