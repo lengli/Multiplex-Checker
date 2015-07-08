@@ -164,7 +164,7 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Entry" id="entry1">
+              <widget class="Gtk.Entry" id="ThresholdEntry">
                 <property name="MemberName" />
                 <property name="WidthRequest">100</property>
                 <property name="CanFocus">True</property>
@@ -177,7 +177,7 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Entry" id="entry2">
+              <widget class="Gtk.Entry" id="TopPeaksEntry">
                 <property name="MemberName" />
                 <property name="WidthRequest">100</property>
                 <property name="CanFocus">True</property>
@@ -186,11 +186,11 @@
               </widget>
               <packing>
                 <property name="X">110</property>
-                <property name="Y">115</property>
+                <property name="Y">85</property>
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Entry" id="entry3">
+              <widget class="Gtk.Entry" id="RightWindowEntry">
                 <property name="MemberName" />
                 <property name="WidthRequest">100</property>
                 <property name="CanFocus">True</property>
@@ -203,7 +203,7 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.CheckButton" id="checkbutton1">
+              <widget class="Gtk.CheckButton" id="PredictionCheck">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="Label" translatable="yes" />
@@ -213,11 +213,11 @@
               </widget>
               <packing>
                 <property name="X">110</property>
-                <property name="Y">89</property>
+                <property name="Y">119</property>
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Entry" id="entry4">
+              <widget class="Gtk.Entry" id="LeftWindowEntry">
                 <property name="MemberName" />
                 <property name="WidthRequest">100</property>
                 <property name="CanFocus">True</property>

@@ -41,15 +41,15 @@ public partial class MainWindow
 	
 	private global::Gtk.Label label10;
 	
-	private global::Gtk.Entry entry1;
+	private global::Gtk.Entry ThresholdEntry;
 	
-	private global::Gtk.Entry entry2;
+	private global::Gtk.Entry TopPeaksEntry;
 	
-	private global::Gtk.Entry entry3;
+	private global::Gtk.Entry RightWindowEntry;
 	
-	private global::Gtk.CheckButton checkbutton1;
+	private global::Gtk.CheckButton PredictionCheck;
 	
-	private global::Gtk.Entry entry4;
+	private global::Gtk.Entry LeftWindowEntry;
 	
 	private global::Gtk.Label ErrorLbl;
 	
@@ -194,58 +194,58 @@ public partial class MainWindow
 		w13.X = 410;
 		w13.Y = 30;
 		// Container child fixed2.Gtk.Fixed+FixedChild
-		this.entry1 = new global::Gtk.Entry ();
-		this.entry1.WidthRequest = 100;
-		this.entry1.CanFocus = true;
-		this.entry1.Name = "entry1";
-		this.entry1.IsEditable = true;
-		this.entry1.InvisibleChar = '●';
-		this.fixed2.Add (this.entry1);
-		global::Gtk.Fixed.FixedChild w14 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.entry1]));
+		this.ThresholdEntry = new global::Gtk.Entry ();
+		this.ThresholdEntry.WidthRequest = 100;
+		this.ThresholdEntry.CanFocus = true;
+		this.ThresholdEntry.Name = "ThresholdEntry";
+		this.ThresholdEntry.IsEditable = true;
+		this.ThresholdEntry.InvisibleChar = '●';
+		this.fixed2.Add (this.ThresholdEntry);
+		global::Gtk.Fixed.FixedChild w14 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.ThresholdEntry]));
 		w14.X = 110;
 		w14.Y = 55;
 		// Container child fixed2.Gtk.Fixed+FixedChild
-		this.entry2 = new global::Gtk.Entry ();
-		this.entry2.WidthRequest = 100;
-		this.entry2.CanFocus = true;
-		this.entry2.Name = "entry2";
-		this.entry2.IsEditable = true;
-		this.entry2.InvisibleChar = '●';
-		this.fixed2.Add (this.entry2);
-		global::Gtk.Fixed.FixedChild w15 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.entry2]));
+		this.TopPeaksEntry = new global::Gtk.Entry ();
+		this.TopPeaksEntry.WidthRequest = 100;
+		this.TopPeaksEntry.CanFocus = true;
+		this.TopPeaksEntry.Name = "TopPeaksEntry";
+		this.TopPeaksEntry.IsEditable = true;
+		this.TopPeaksEntry.InvisibleChar = '●';
+		this.fixed2.Add (this.TopPeaksEntry);
+		global::Gtk.Fixed.FixedChild w15 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.TopPeaksEntry]));
 		w15.X = 110;
-		w15.Y = 115;
+		w15.Y = 85;
 		// Container child fixed2.Gtk.Fixed+FixedChild
-		this.entry3 = new global::Gtk.Entry ();
-		this.entry3.WidthRequest = 100;
-		this.entry3.CanFocus = true;
-		this.entry3.Name = "entry3";
-		this.entry3.IsEditable = true;
-		this.entry3.InvisibleChar = '●';
-		this.fixed2.Add (this.entry3);
-		global::Gtk.Fixed.FixedChild w16 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.entry3]));
+		this.RightWindowEntry = new global::Gtk.Entry ();
+		this.RightWindowEntry.WidthRequest = 100;
+		this.RightWindowEntry.CanFocus = true;
+		this.RightWindowEntry.Name = "RightWindowEntry";
+		this.RightWindowEntry.IsEditable = true;
+		this.RightWindowEntry.InvisibleChar = '●';
+		this.fixed2.Add (this.RightWindowEntry);
+		global::Gtk.Fixed.FixedChild w16 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.RightWindowEntry]));
 		w16.X = 480;
 		w16.Y = 55;
 		// Container child fixed2.Gtk.Fixed+FixedChild
-		this.checkbutton1 = new global::Gtk.CheckButton ();
-		this.checkbutton1.CanFocus = true;
-		this.checkbutton1.Name = "checkbutton1";
-		this.checkbutton1.Label = "";
-		this.checkbutton1.DrawIndicator = true;
-		this.checkbutton1.UseUnderline = true;
-		this.fixed2.Add (this.checkbutton1);
-		global::Gtk.Fixed.FixedChild w17 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.checkbutton1]));
+		this.PredictionCheck = new global::Gtk.CheckButton ();
+		this.PredictionCheck.CanFocus = true;
+		this.PredictionCheck.Name = "PredictionCheck";
+		this.PredictionCheck.Label = "";
+		this.PredictionCheck.DrawIndicator = true;
+		this.PredictionCheck.UseUnderline = true;
+		this.fixed2.Add (this.PredictionCheck);
+		global::Gtk.Fixed.FixedChild w17 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.PredictionCheck]));
 		w17.X = 110;
-		w17.Y = 89;
+		w17.Y = 119;
 		// Container child fixed2.Gtk.Fixed+FixedChild
-		this.entry4 = new global::Gtk.Entry ();
-		this.entry4.WidthRequest = 100;
-		this.entry4.CanFocus = true;
-		this.entry4.Name = "entry4";
-		this.entry4.IsEditable = true;
-		this.entry4.InvisibleChar = '●';
-		this.fixed2.Add (this.entry4);
-		global::Gtk.Fixed.FixedChild w18 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.entry4]));
+		this.LeftWindowEntry = new global::Gtk.Entry ();
+		this.LeftWindowEntry.WidthRequest = 100;
+		this.LeftWindowEntry.CanFocus = true;
+		this.LeftWindowEntry.Name = "LeftWindowEntry";
+		this.LeftWindowEntry.IsEditable = true;
+		this.LeftWindowEntry.InvisibleChar = '●';
+		this.fixed2.Add (this.LeftWindowEntry);
+		global::Gtk.Fixed.FixedChild w18 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.LeftWindowEntry]));
 		w18.X = 480;
 		w18.Y = 25;
 		// Container child fixed2.Gtk.Fixed+FixedChild

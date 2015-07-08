@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public partial class MainWindow: Gtk.Window
 {
 	private Ms1 ms1;
+	private string filename = "";
 
 	public MainWindow () : base (Gtk.WindowType.Toplevel)
 	{
@@ -15,7 +16,6 @@ public partial class MainWindow: Gtk.Window
 		nSpecLbl.Text = "";
 		FileNameLbl.Text = "";
 		ErrorLbl.Text = "";
-
 
 		openAct.Activated += OpenFileEvent;
 		mtpxCombo.Changed += MtpxChanged;
@@ -44,6 +44,62 @@ public partial class MainWindow: Gtk.Window
 
 	private void RunClicked(object sender, EventArgs e)
 	{
+		// Entries validation
+		ErrorLbl.Text = "";
+
+		if(LeftWindowEntry.Text != ""){
+			double t;
+			if (!double.TryParse (LeftWindowEntry.Text.Replace(',' ,'.') , out t)) {
+				ErrorLbl.Text = "Insert a valid Real for Left Window Size";
+				return;
+			}
+			Spectrum.BackWindow = t;
+		}
+
+		if(RightWindowEntry.Text != ""){
+			double t;
+			if (!double.TryParse (RightWindowEntry.Text.Replace(',' ,'.') , out t)) {
+				ErrorLbl.Text = "Insert a valid Real for Right Window Size";
+				return;
+			}
+			Spectrum.FrontWindow = t;
+		}
+
+		if(ThresholdEntry.Text != ""){
+			double t;
+			if (!double.TryParse (ThresholdEntry.Text.Replace(',' ,'.') , out t)) {
+				ErrorLbl.Text = "Insert a valid Real for Threshold";
+				return;
+			}
+			Spectrum.Threshold = t;
+		}
+
+		if(TopPeaksEntry.Text != ""){
+			int tp;
+			if (!int.TryParse (TopPeaksEntry.Text, out tp)) {
+				ErrorLbl.Text = "Insert a valid integer on Top Peaks";
+				return;
+			}
+			Spectrum.TopPeak = tp;
+		}
+
+		if (filename == "") {
+			ErrorLbl.Text = "Choose a file";
+			return;			
+		}
+
+		ms1 = new Ms1();
+		ms1.filename = filename;
+		ms1.Run ();
+		nSpecLbl.Text = ms1.Spectra.Count.ToString();
+
+		mtpxCombo.Clear();
+		CellRendererText cell = new CellRendererText();
+		mtpxCombo.PackStart(cell, false);
+		mtpxCombo.AddAttribute(cell, "text", 0);
+		ListStore store = new ListStore(typeof (string));
+		mtpxCombo.Model = store;
+
 		for(int i = 0; i < ms1.Spectra.Count; i++)
 		{
 			Spectrum sp = ms1.Spectra[i];
@@ -95,7 +151,7 @@ public partial class MainWindow: Gtk.Window
 			}
 
 			if(info != "" && info.IndexOf(")/") > 0)
-				mtpxCombo.AppendText(i.ToString());
+				store.AppendValues(i.ToString());
 
 			sp.info = info;
 		}
@@ -112,10 +168,8 @@ public partial class MainWindow: Gtk.Window
 
 		if (filechooser.Run() == (int)ResponseType.Accept) 
 		{
-			ms1 = new Ms1 (filechooser.Filename);
-			ms1.Run ();
-			nSpecLbl.Text = ms1.Spectra.Count.ToString();
-			FileNameLbl.Text = filechooser.Filename;
+			filename = filechooser.Filename;
+			FileNameLbl.Text = filename;
 		}
 
 		filechooser.Destroy();

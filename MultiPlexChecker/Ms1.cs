@@ -8,14 +8,15 @@ namespace MultiPlexChecker
 	{
 		private StreamReader sr;
 		public List<Spectrum> Spectra = new List<Spectrum>();
+		public string filename;
 
-		public Ms1(string filename)
+		public Ms1()
 		{
-			sr = new StreamReader (filename);
 		}
 
 		public void Run()
 		{
+			sr = new StreamReader (filename);
 			string line = "";
 			Spectrum temp = null;
 			while((line = sr.ReadLine()) != null)
@@ -61,6 +62,8 @@ namespace MultiPlexChecker
 		public static Double error = 1E-3;
 		public static Double FrontWindow = 1.5;
 		public static Double BackWindow = 0.5;
+		// to cut down noise spectrum
+		public static Double Threshold = 0;
 
 		public string info = "";
 
