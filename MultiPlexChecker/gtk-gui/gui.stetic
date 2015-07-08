@@ -117,7 +117,7 @@
                 <property name="LabelProp" translatable="yes">Right Size:</property>
               </widget>
               <packing>
-                <property name="X">360</property>
+                <property name="X">410</property>
                 <property name="Y">60</property>
               </packing>
             </child>
@@ -136,7 +136,7 @@
                 <property name="LabelProp" translatable="yes">Left Size:</property>
               </widget>
               <packing>
-                <property name="X">360</property>
+                <property name="X">410</property>
                 <property name="Y">30</property>
               </packing>
             </child>

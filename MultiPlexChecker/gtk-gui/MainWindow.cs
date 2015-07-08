@@ -4,16 +4,18 @@
 public partial class MainWindow
 {
 	private global::Gtk.UIManager UIManager;
-
+	
 	private global::Gtk.Action FileAction;
-
+	
 	private global::Gtk.Action AboutAction;
-
+	
 	private global::Gtk.Action openAction;
-
+	
 	private global::Gtk.Action openAct;
-
+	
 	private global::Gtk.Fixed fixed1;
+	
+	private global::Gtk.MenuBar menubar1;
 	
 	private global::Gtk.Fixed fixed2;
 	
@@ -54,12 +56,10 @@ public partial class MainWindow
 	private global::Gtk.Label label5;
 	
 	private global::Gtk.Label retLbl;
-
-	private global::Gtk.MenuBar menubar1;
 	
 	private global::Gtk.HSeparator hseparator1;
-	
-	protected virtual void Build()
+
+	protected virtual void Build ()
 	{
 		global::Stetic.Gui.Initialize (this);
 		// Widget MainWindow
