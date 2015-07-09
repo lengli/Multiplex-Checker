@@ -9,6 +9,9 @@ public partial class MainWindow: Gtk.Window
 	private Ms1 ms1;
 	private string filename = "";
 
+	// GUI param
+	private static int nScanLine = 6;
+
 	public MainWindow () : base (Gtk.WindowType.Toplevel)
 	{
 		//this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='FileAction' action='FileAction'><menuitem name='openAct' action='openAct'/></menu><menu name='AboutAction' action='AboutAction'/></menubar></ui>");
@@ -142,7 +145,7 @@ public partial class MainWindow: Gtk.Window
 					}
 					for(int j = 0; j < intensities.Count; j++)
 					{
-						if(j % 4 == 0)
+						if(j % nScanLine == 0)
 							info += "\n  ";
 						info += intensities[j].ToString("0.00") + "(" + charges[j].ToString() + ")/";									
 					}

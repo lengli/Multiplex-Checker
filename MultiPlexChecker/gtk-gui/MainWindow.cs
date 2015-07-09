@@ -21,13 +21,9 @@ public partial class MainWindow
 	
 	private global::Gtk.Button runBtn;
 	
-	private global::Gtk.Label nSpecLbl;
-	
 	private global::Gtk.Label label1;
 	
 	private global::Gtk.Label label2;
-	
-	private global::Gtk.Label label4;
 	
 	private global::Gtk.Label FileNameLbl;
 	
@@ -69,6 +65,10 @@ public partial class MainWindow
 	
 	private global::Gtk.Label retLbl;
 	
+	private global::Gtk.Label label4;
+	
+	private global::Gtk.Label nSpecLbl;
+	
 	private global::Gtk.HSeparator hseparator1;
 
 	protected virtual void Build ()
@@ -97,7 +97,6 @@ public partial class MainWindow
 		this.BorderWidth = ((uint)(3));
 		// Container child MainWindow.Gtk.Container+ContainerChild
 		this.fixed1 = new global::Gtk.Fixed ();
-		this.fixed1.Name = "fixed1";
 		this.fixed1.HasWindow = false;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='FileAction' action='FileAction'><menuitem name='openAct' action='openAct'/></menu><menu name='AboutAction' action='AboutAction'/></menubar></ui>");
@@ -108,7 +107,7 @@ public partial class MainWindow
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.fixed2 = new global::Gtk.Fixed ();
 		this.fixed2.WidthRequest = 600;
-		this.fixed2.HeightRequest = 210;
+		this.fixed2.HeightRequest = 180;
 		this.fixed2.Name = "fixed2";
 		this.fixed2.HasWindow = false;
 		// Container child fixed2.Gtk.Fixed+FixedChild
@@ -119,113 +118,100 @@ public partial class MainWindow
 		this.runBtn.Label = global::Mono.Unix.Catalog.GetString ("Run");
 		this.fixed2.Add (this.runBtn);
 		global::Gtk.Fixed.FixedChild w3 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.runBtn]));
-		w3.Y = 150;
-		// Container child fixed2.Gtk.Fixed+FixedChild
-		this.nSpecLbl = new global::Gtk.Label ();
-		this.nSpecLbl.Name = "nSpecLbl";
-		this.nSpecLbl.Xalign = 0F;
-		this.nSpecLbl.LabelProp = global::Mono.Unix.Catalog.GetString ("nSpec");
-		this.fixed2.Add (this.nSpecLbl);
-		global::Gtk.Fixed.FixedChild w4 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.nSpecLbl]));
-		w4.X = 110;
-		w4.Y = 30;
+		w3.Y = 120;
 		// Container child fixed2.Gtk.Fixed+FixedChild
 		this.label1 = new global::Gtk.Label ();
 		this.label1.Name = "label1";
 		this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("Threshold:");
 		this.fixed2.Add (this.label1);
-		global::Gtk.Fixed.FixedChild w5 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.label1]));
-		w5.Y = 60;
+		global::Gtk.Fixed.FixedChild w4 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.label1]));
+		w4.Y = 30;
 		// Container child fixed2.Gtk.Fixed+FixedChild
 		this.label2 = new global::Gtk.Label ();
 		this.label2.Name = "label2";
 		this.label2.LabelProp = global::Mono.Unix.Catalog.GetString ("Filename:");
 		this.fixed2.Add (this.label2);
 		// Container child fixed2.Gtk.Fixed+FixedChild
-		this.label4 = new global::Gtk.Label ();
-		this.label4.Name = "label4";
-		this.label4.LabelProp = global::Mono.Unix.Catalog.GetString ("N. of Spectrum:");
-		this.fixed2.Add (this.label4);
-		global::Gtk.Fixed.FixedChild w7 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.label4]));
-		w7.Y = 30;
-		// Container child fixed2.Gtk.Fixed+FixedChild
 		this.FileNameLbl = new global::Gtk.Label ();
 		this.FileNameLbl.Name = "FileNameLbl";
 		this.FileNameLbl.LabelProp = global::Mono.Unix.Catalog.GetString ("label4");
 		this.fixed2.Add (this.FileNameLbl);
-		global::Gtk.Fixed.FixedChild w8 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.FileNameLbl]));
-		w8.X = 110;
+		global::Gtk.Fixed.FixedChild w6 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.FileNameLbl]));
+		w6.X = 110;
 		// Container child fixed2.Gtk.Fixed+FixedChild
 		this.label6 = new global::Gtk.Label ();
 		this.label6.Name = "label6";
 		this.label6.LabelProp = global::Mono.Unix.Catalog.GetString ("N. of Top Peaks:");
 		this.fixed2.Add (this.label6);
-		global::Gtk.Fixed.FixedChild w9 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.label6]));
-		w9.Y = 90;
+		global::Gtk.Fixed.FixedChild w7 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.label6]));
+		w7.Y = 60;
 		// Container child fixed2.Gtk.Fixed+FixedChild
 		this.label7 = new global::Gtk.Label ();
 		this.label7.Name = "label7";
 		this.label7.LabelProp = global::Mono.Unix.Catalog.GetString ("Window");
 		this.fixed2.Add (this.label7);
-		global::Gtk.Fixed.FixedChild w10 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.label7]));
-		w10.X = 350;
-		w10.Y = 30;
+		global::Gtk.Fixed.FixedChild w8 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.label7]));
+		w8.X = 350;
+		w8.Y = 30;
 		// Container child fixed2.Gtk.Fixed+FixedChild
 		this.label11 = new global::Gtk.Label ();
 		this.label11.Name = "label11";
 		this.label11.LabelProp = global::Mono.Unix.Catalog.GetString ("Right Size:");
 		this.fixed2.Add (this.label11);
-		global::Gtk.Fixed.FixedChild w11 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.label11]));
-		w11.X = 410;
-		w11.Y = 60;
+		global::Gtk.Fixed.FixedChild w9 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.label11]));
+		w9.X = 410;
+		w9.Y = 60;
 		// Container child fixed2.Gtk.Fixed+FixedChild
 		this.label12 = new global::Gtk.Label ();
 		this.label12.Name = "label12";
 		this.label12.LabelProp = global::Mono.Unix.Catalog.GetString ("Use prediction");
 		this.fixed2.Add (this.label12);
-		global::Gtk.Fixed.FixedChild w12 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.label12]));
-		w12.Y = 120;
+		global::Gtk.Fixed.FixedChild w10 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.label12]));
+		w10.Y = 90;
 		// Container child fixed2.Gtk.Fixed+FixedChild
 		this.label10 = new global::Gtk.Label ();
 		this.label10.Name = "label10";
 		this.label10.LabelProp = global::Mono.Unix.Catalog.GetString ("Left Size:");
 		this.fixed2.Add (this.label10);
-		global::Gtk.Fixed.FixedChild w13 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.label10]));
-		w13.X = 410;
-		w13.Y = 30;
+		global::Gtk.Fixed.FixedChild w11 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.label10]));
+		w11.X = 410;
+		w11.Y = 30;
 		// Container child fixed2.Gtk.Fixed+FixedChild
 		this.ThresholdEntry = new global::Gtk.Entry ();
 		this.ThresholdEntry.WidthRequest = 100;
 		this.ThresholdEntry.CanFocus = true;
 		this.ThresholdEntry.Name = "ThresholdEntry";
+		this.ThresholdEntry.Text = global::Mono.Unix.Catalog.GetString ("5000");
 		this.ThresholdEntry.IsEditable = true;
 		this.ThresholdEntry.InvisibleChar = '●';
 		this.fixed2.Add (this.ThresholdEntry);
-		global::Gtk.Fixed.FixedChild w14 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.ThresholdEntry]));
-		w14.X = 110;
-		w14.Y = 55;
+		global::Gtk.Fixed.FixedChild w12 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.ThresholdEntry]));
+		w12.X = 110;
+		w12.Y = 25;
 		// Container child fixed2.Gtk.Fixed+FixedChild
 		this.TopPeaksEntry = new global::Gtk.Entry ();
 		this.TopPeaksEntry.WidthRequest = 100;
 		this.TopPeaksEntry.CanFocus = true;
 		this.TopPeaksEntry.Name = "TopPeaksEntry";
+		this.TopPeaksEntry.Text = global::Mono.Unix.Catalog.GetString ("4");
 		this.TopPeaksEntry.IsEditable = true;
 		this.TopPeaksEntry.InvisibleChar = '●';
 		this.fixed2.Add (this.TopPeaksEntry);
-		global::Gtk.Fixed.FixedChild w15 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.TopPeaksEntry]));
-		w15.X = 110;
-		w15.Y = 85;
+		global::Gtk.Fixed.FixedChild w13 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.TopPeaksEntry]));
+		w13.X = 110;
+		w13.Y = 55;
 		// Container child fixed2.Gtk.Fixed+FixedChild
 		this.RightWindowEntry = new global::Gtk.Entry ();
 		this.RightWindowEntry.WidthRequest = 100;
 		this.RightWindowEntry.CanFocus = true;
 		this.RightWindowEntry.Name = "RightWindowEntry";
+		this.RightWindowEntry.Text = global::Mono.Unix.Catalog.GetString ("1.5");
 		this.RightWindowEntry.IsEditable = true;
 		this.RightWindowEntry.InvisibleChar = '●';
 		this.fixed2.Add (this.RightWindowEntry);
-		global::Gtk.Fixed.FixedChild w16 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.RightWindowEntry]));
-		w16.X = 480;
-		w16.Y = 55;
+		global::Gtk.Fixed.FixedChild w14 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.RightWindowEntry]));
+		w14.X = 480;
+		w14.Y = 55;
 		// Container child fixed2.Gtk.Fixed+FixedChild
 		this.PredictionCheck = new global::Gtk.CheckButton ();
 		this.PredictionCheck.CanFocus = true;
@@ -234,36 +220,37 @@ public partial class MainWindow
 		this.PredictionCheck.DrawIndicator = true;
 		this.PredictionCheck.UseUnderline = true;
 		this.fixed2.Add (this.PredictionCheck);
-		global::Gtk.Fixed.FixedChild w17 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.PredictionCheck]));
-		w17.X = 110;
-		w17.Y = 119;
+		global::Gtk.Fixed.FixedChild w15 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.PredictionCheck]));
+		w15.X = 110;
+		w15.Y = 89;
 		// Container child fixed2.Gtk.Fixed+FixedChild
 		this.LeftWindowEntry = new global::Gtk.Entry ();
 		this.LeftWindowEntry.WidthRequest = 100;
 		this.LeftWindowEntry.CanFocus = true;
 		this.LeftWindowEntry.Name = "LeftWindowEntry";
+		this.LeftWindowEntry.Text = global::Mono.Unix.Catalog.GetString ("0.5");
 		this.LeftWindowEntry.IsEditable = true;
 		this.LeftWindowEntry.InvisibleChar = '●';
 		this.fixed2.Add (this.LeftWindowEntry);
-		global::Gtk.Fixed.FixedChild w18 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.LeftWindowEntry]));
-		w18.X = 480;
-		w18.Y = 25;
+		global::Gtk.Fixed.FixedChild w16 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.LeftWindowEntry]));
+		w16.X = 480;
+		w16.Y = 25;
 		// Container child fixed2.Gtk.Fixed+FixedChild
 		this.ErrorLbl = new global::Gtk.Label ();
 		this.ErrorLbl.Name = "ErrorLbl";
 		this.ErrorLbl.LabelProp = global::Mono.Unix.Catalog.GetString ("ErrorLbl");
 		this.fixed2.Add (this.ErrorLbl);
-		global::Gtk.Fixed.FixedChild w19 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.ErrorLbl]));
-		w19.X = 50;
-		w19.Y = 159;
+		global::Gtk.Fixed.FixedChild w17 = ((global::Gtk.Fixed.FixedChild)(this.fixed2 [this.ErrorLbl]));
+		w17.X = 50;
+		w17.Y = 129;
 		this.fixed1.Add (this.fixed2);
-		global::Gtk.Fixed.FixedChild w20 = ((global::Gtk.Fixed.FixedChild)(this.fixed1 [this.fixed2]));
-		w20.X = 20;
-		w20.Y = 35;
+		global::Gtk.Fixed.FixedChild w18 = ((global::Gtk.Fixed.FixedChild)(this.fixed1 [this.fixed2]));
+		w18.X = 20;
+		w18.Y = 35;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.fixed3 = new global::Gtk.Fixed ();
-		this.fixed3.WidthRequest = 500;
-		this.fixed3.HeightRequest = 300;
+		this.fixed3.WidthRequest = 610;
+		this.fixed3.HeightRequest = 370;
 		this.fixed3.Name = "fixed3";
 		this.fixed3.HasWindow = false;
 		// Container child fixed3.Gtk.Fixed+FixedChild
@@ -271,61 +258,79 @@ public partial class MainWindow
 		this.indexLbl.Name = "indexLbl";
 		this.indexLbl.LabelProp = global::Mono.Unix.Catalog.GetString ("Scan Index:");
 		this.fixed3.Add (this.indexLbl);
-		global::Gtk.Fixed.FixedChild w21 = ((global::Gtk.Fixed.FixedChild)(this.fixed3 [this.indexLbl]));
-		w21.Y = 8;
+		global::Gtk.Fixed.FixedChild w19 = ((global::Gtk.Fixed.FixedChild)(this.fixed3 [this.indexLbl]));
+		w19.Y = 8;
 		// Container child fixed3.Gtk.Fixed+FixedChild
 		this.mtpxCombo = global::Gtk.ComboBox.NewText ();
 		this.mtpxCombo.Name = "mtpxCombo";
 		this.fixed3.Add (this.mtpxCombo);
-		global::Gtk.Fixed.FixedChild w22 = ((global::Gtk.Fixed.FixedChild)(this.fixed3 [this.mtpxCombo]));
-		w22.X = 72;
+		global::Gtk.Fixed.FixedChild w20 = ((global::Gtk.Fixed.FixedChild)(this.fixed3 [this.mtpxCombo]));
+		w20.X = 72;
 		// Container child fixed3.Gtk.Fixed+FixedChild
 		this.label3 = new global::Gtk.Label ();
 		this.label3.Name = "label3";
 		this.label3.LabelProp = global::Mono.Unix.Catalog.GetString ("Scan information");
 		this.fixed3.Add (this.label3);
-		global::Gtk.Fixed.FixedChild w23 = ((global::Gtk.Fixed.FixedChild)(this.fixed3 [this.label3]));
-		w23.Y = 85;
+		global::Gtk.Fixed.FixedChild w21 = ((global::Gtk.Fixed.FixedChild)(this.fixed3 [this.label3]));
+		w21.Y = 85;
 		// Container child fixed3.Gtk.Fixed+FixedChild
 		this.scrolledwindow1 = new global::Gtk.ScrolledWindow ();
-		this.scrolledwindow1.WidthRequest = 450;
-		this.scrolledwindow1.HeightRequest = 150;
+		this.scrolledwindow1.WidthRequest = 600;
+		this.scrolledwindow1.HeightRequest = 250;
 		this.scrolledwindow1.CanFocus = true;
 		this.scrolledwindow1.Name = "scrolledwindow1";
 		this.scrolledwindow1.ShadowType = ((global::Gtk.ShadowType)(1));
 		// Container child scrolledwindow1.Gtk.Container+ContainerChild
-		global::Gtk.Viewport w24 = new global::Gtk.Viewport ();
-		w24.ShadowType = ((global::Gtk.ShadowType)(0));
+		global::Gtk.Viewport w22 = new global::Gtk.Viewport ();
+		w22.ShadowType = ((global::Gtk.ShadowType)(0));
 		// Container child GtkViewport.Gtk.Container+ContainerChild
 		this.infoLbl = new global::Gtk.Label ();
 		this.infoLbl.Name = "infoLbl";
 		this.infoLbl.Xalign = 0.04F;
 		this.infoLbl.Yalign = 0.04F;
 		this.infoLbl.LabelProp = global::Mono.Unix.Catalog.GetString ("-");
-		w24.Add (this.infoLbl);
-		this.scrolledwindow1.Add (w24);
+		w22.Add (this.infoLbl);
+		this.scrolledwindow1.Add (w22);
 		this.fixed3.Add (this.scrolledwindow1);
-		global::Gtk.Fixed.FixedChild w27 = ((global::Gtk.Fixed.FixedChild)(this.fixed3 [this.scrolledwindow1]));
-		w27.Y = 107;
+		global::Gtk.Fixed.FixedChild w25 = ((global::Gtk.Fixed.FixedChild)(this.fixed3 [this.scrolledwindow1]));
+		w25.Y = 107;
 		// Container child fixed3.Gtk.Fixed+FixedChild
 		this.label5 = new global::Gtk.Label ();
 		this.label5.Name = "label5";
 		this.label5.LabelProp = global::Mono.Unix.Catalog.GetString ("Retention Time: ");
 		this.fixed3.Add (this.label5);
-		global::Gtk.Fixed.FixedChild w28 = ((global::Gtk.Fixed.FixedChild)(this.fixed3 [this.label5]));
-		w28.Y = 50;
+		global::Gtk.Fixed.FixedChild w26 = ((global::Gtk.Fixed.FixedChild)(this.fixed3 [this.label5]));
+		w26.X = 450;
+		w26.Y = 85;
 		// Container child fixed3.Gtk.Fixed+FixedChild
 		this.retLbl = new global::Gtk.Label ();
 		this.retLbl.Name = "retLbl";
 		this.retLbl.LabelProp = global::Mono.Unix.Catalog.GetString ("-");
+		this.retLbl.Justify = ((global::Gtk.Justification)(1));
 		this.fixed3.Add (this.retLbl);
-		global::Gtk.Fixed.FixedChild w29 = ((global::Gtk.Fixed.FixedChild)(this.fixed3 [this.retLbl]));
-		w29.X = 99;
+		global::Gtk.Fixed.FixedChild w27 = ((global::Gtk.Fixed.FixedChild)(this.fixed3 [this.retLbl]));
+		w27.X = 560;
+		w27.Y = 85;
+		// Container child fixed3.Gtk.Fixed+FixedChild
+		this.label4 = new global::Gtk.Label ();
+		this.label4.Name = "label4";
+		this.label4.LabelProp = global::Mono.Unix.Catalog.GetString ("N. of Spectrum:");
+		this.fixed3.Add (this.label4);
+		global::Gtk.Fixed.FixedChild w28 = ((global::Gtk.Fixed.FixedChild)(this.fixed3 [this.label4]));
+		w28.Y = 50;
+		// Container child fixed3.Gtk.Fixed+FixedChild
+		this.nSpecLbl = new global::Gtk.Label ();
+		this.nSpecLbl.Name = "nSpecLbl";
+		this.nSpecLbl.Xalign = 0F;
+		this.nSpecLbl.LabelProp = global::Mono.Unix.Catalog.GetString ("nSpec");
+		this.fixed3.Add (this.nSpecLbl);
+		global::Gtk.Fixed.FixedChild w29 = ((global::Gtk.Fixed.FixedChild)(this.fixed3 [this.nSpecLbl]));
+		w29.X = 110;
 		w29.Y = 50;
 		this.fixed1.Add (this.fixed3);
 		global::Gtk.Fixed.FixedChild w30 = ((global::Gtk.Fixed.FixedChild)(this.fixed1 [this.fixed3]));
 		w30.X = 20;
-		w30.Y = 265;
+		w30.Y = 225;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.hseparator1 = new global::Gtk.HSeparator ();
 		this.hseparator1.WidthRequest = 660;
@@ -333,7 +338,7 @@ public partial class MainWindow
 		this.fixed1.Add (this.hseparator1);
 		global::Gtk.Fixed.FixedChild w31 = ((global::Gtk.Fixed.FixedChild)(this.fixed1 [this.hseparator1]));
 		w31.X = 20;
-		w31.Y = 240;
+		w31.Y = 210;
 		this.Add (this.fixed1);
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();

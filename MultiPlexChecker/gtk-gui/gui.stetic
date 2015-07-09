@@ -57,7 +57,7 @@
           <widget class="Gtk.Fixed" id="fixed2">
             <property name="MemberName" />
             <property name="WidthRequest">600</property>
-            <property name="HeightRequest">210</property>
+            <property name="HeightRequest">180</property>
             <property name="HasWindow">False</property>
             <child>
               <widget class="Gtk.Button" id="runBtn">
@@ -68,18 +68,7 @@
                 <property name="UseUnderline">True</property>
               </widget>
               <packing>
-                <property name="Y">150</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.Label" id="nSpecLbl">
-                <property name="MemberName" />
-                <property name="Xalign">0</property>
-                <property name="LabelProp" translatable="yes">nSpec</property>
-              </widget>
-              <packing>
-                <property name="X">110</property>
-                <property name="Y">30</property>
+                <property name="Y">120</property>
               </packing>
             </child>
             <child>
@@ -88,7 +77,7 @@
                 <property name="LabelProp" translatable="yes">Threshold:</property>
               </widget>
               <packing>
-                <property name="Y">60</property>
+                <property name="Y">30</property>
               </packing>
             </child>
             <child>
@@ -96,15 +85,6 @@
                 <property name="MemberName" />
                 <property name="LabelProp" translatable="yes">Filename:</property>
               </widget>
-            </child>
-            <child>
-              <widget class="Gtk.Label" id="label4">
-                <property name="MemberName" />
-                <property name="LabelProp" translatable="yes">N. of Spectrum:</property>
-              </widget>
-              <packing>
-                <property name="Y">30</property>
-              </packing>
             </child>
             <child>
               <widget class="Gtk.Label" id="FileNameLbl">
@@ -121,7 +101,7 @@
                 <property name="LabelProp" translatable="yes">N. of Top Peaks:</property>
               </widget>
               <packing>
-                <property name="Y">90</property>
+                <property name="Y">60</property>
               </packing>
             </child>
             <child>
@@ -150,7 +130,7 @@
                 <property name="LabelProp" translatable="yes">Use prediction</property>
               </widget>
               <packing>
-                <property name="Y">120</property>
+                <property name="Y">90</property>
               </packing>
             </child>
             <child>
@@ -168,6 +148,21 @@
                 <property name="MemberName" />
                 <property name="WidthRequest">100</property>
                 <property name="CanFocus">True</property>
+                <property name="Text" translatable="yes">5000</property>
+                <property name="IsEditable">True</property>
+                <property name="InvisibleChar">●</property>
+              </widget>
+              <packing>
+                <property name="X">110</property>
+                <property name="Y">25</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Entry" id="TopPeaksEntry">
+                <property name="MemberName" />
+                <property name="WidthRequest">100</property>
+                <property name="CanFocus">True</property>
+                <property name="Text" translatable="yes">4</property>
                 <property name="IsEditable">True</property>
                 <property name="InvisibleChar">●</property>
               </widget>
@@ -177,23 +172,11 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Entry" id="TopPeaksEntry">
-                <property name="MemberName" />
-                <property name="WidthRequest">100</property>
-                <property name="CanFocus">True</property>
-                <property name="IsEditable">True</property>
-                <property name="InvisibleChar">●</property>
-              </widget>
-              <packing>
-                <property name="X">110</property>
-                <property name="Y">85</property>
-              </packing>
-            </child>
-            <child>
               <widget class="Gtk.Entry" id="RightWindowEntry">
                 <property name="MemberName" />
                 <property name="WidthRequest">100</property>
                 <property name="CanFocus">True</property>
+                <property name="Text" translatable="yes">1.5</property>
                 <property name="IsEditable">True</property>
                 <property name="InvisibleChar">●</property>
               </widget>
@@ -213,7 +196,7 @@
               </widget>
               <packing>
                 <property name="X">110</property>
-                <property name="Y">119</property>
+                <property name="Y">89</property>
               </packing>
             </child>
             <child>
@@ -221,6 +204,7 @@
                 <property name="MemberName" />
                 <property name="WidthRequest">100</property>
                 <property name="CanFocus">True</property>
+                <property name="Text" translatable="yes">0.5</property>
                 <property name="IsEditable">True</property>
                 <property name="InvisibleChar">●</property>
               </widget>
@@ -236,7 +220,7 @@
               </widget>
               <packing>
                 <property name="X">50</property>
-                <property name="Y">159</property>
+                <property name="Y">129</property>
               </packing>
             </child>
           </widget>
@@ -248,8 +232,8 @@
         <child>
           <widget class="Gtk.Fixed" id="fixed3">
             <property name="MemberName" />
-            <property name="WidthRequest">500</property>
-            <property name="HeightRequest">300</property>
+            <property name="WidthRequest">610</property>
+            <property name="HeightRequest">370</property>
             <property name="HasWindow">False</property>
             <child>
               <widget class="Gtk.Label" id="indexLbl">
@@ -282,8 +266,8 @@
             <child>
               <widget class="Gtk.ScrolledWindow" id="scrolledwindow1">
                 <property name="MemberName" />
-                <property name="WidthRequest">450</property>
-                <property name="HeightRequest">150</property>
+                <property name="WidthRequest">600</property>
+                <property name="HeightRequest">250</property>
                 <property name="CanFocus">True</property>
                 <property name="ShadowType">In</property>
                 <child>
@@ -311,23 +295,45 @@
                 <property name="LabelProp" translatable="yes">Retention Time: </property>
               </widget>
               <packing>
-                <property name="Y">50</property>
+                <property name="X">450</property>
+                <property name="Y">85</property>
               </packing>
             </child>
             <child>
               <widget class="Gtk.Label" id="retLbl">
                 <property name="MemberName" />
                 <property name="LabelProp" translatable="yes">-</property>
+                <property name="Justify">Right</property>
               </widget>
               <packing>
-                <property name="X">99</property>
+                <property name="X">560</property>
+                <property name="Y">85</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Label" id="label4">
+                <property name="MemberName" />
+                <property name="LabelProp" translatable="yes">N. of Spectrum:</property>
+              </widget>
+              <packing>
+                <property name="Y">50</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Label" id="nSpecLbl">
+                <property name="MemberName" />
+                <property name="Xalign">0</property>
+                <property name="LabelProp" translatable="yes">nSpec</property>
+              </widget>
+              <packing>
+                <property name="X">110</property>
                 <property name="Y">50</property>
               </packing>
             </child>
           </widget>
           <packing>
             <property name="X">20</property>
-            <property name="Y">265</property>
+            <property name="Y">225</property>
           </packing>
         </child>
         <child>
@@ -337,7 +343,7 @@
           </widget>
           <packing>
             <property name="X">20</property>
-            <property name="Y">240</property>
+            <property name="Y">210</property>
           </packing>
         </child>
       </widget>
