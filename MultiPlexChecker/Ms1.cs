@@ -40,15 +40,18 @@ namespace MultiPlexChecker
 						temp.IonInjectionTime = Convert.ToDouble(itens [2]);
 					continue;
 				}
-				// spectrum peaks
 
+				// spectrum peaks
 				string[] peak = line.Split (' ');
 				SpectrumItem it = new SpectrumItem ();
 				it.Mz = Convert.ToDouble (peak [0]);
 				it.Intensity = Convert.ToDouble (peak [1]);
-				temp.Peaks.Add (it);
-				if (it.Intensity > temp.MaxIntensity)
-					temp.MaxIntensity = it.Intensity;
+				// parameter to reduce noise
+				if (it.Intensity > Spectrum.Threshold) {
+					temp.Peaks.Add (it);
+					if (it.Intensity > temp.MaxIntensity)
+						temp.MaxIntensity = it.Intensity;
+				}
 			}
 			// add the last one
 			Spectra.Add (temp);
