@@ -113,13 +113,13 @@ public partial class MainWindow: Gtk.Window
 				// main peak
 				SpectrumItem spItem = sp.Peaks[env.Key];
 				int nPossEnvelopes = env.Value.Count;
-				info += "\nm/z: " + spItem.Mz.ToString();
-				info += " (" + nPossEnvelopes.ToString() + " env";
-				if(nPossEnvelopes > 1) info += "s";
-				info += ")"; 
+				string infoEnv = "\nm/z: " + spItem.Mz.ToString();
+				infoEnv += " (" + nPossEnvelopes.ToString() + " env";
+				if(nPossEnvelopes > 1) infoEnv += "s";
+				infoEnv += ")"; 
 
-				if(spItem.EvenlopesIndexes.Count>0)
-					info += " enveloped";
+				//if(spItem.EvenlopesIndexes.Count>0)
+				//	info += " enveloped";
 
 				if(nPossEnvelopes > 1)
 				{
@@ -146,10 +146,12 @@ public partial class MainWindow: Gtk.Window
 					for(int j = 0; j < intensities.Count; j++)
 					{
 						if(j % nScanLine == 0)
-							info += "\n  ";
-						info += intensities[j].ToString("0.00") + "(" + charges[j].ToString() + ")/";									
+							infoEnv += "\n  ";
+						infoEnv += intensities[j].ToString("0.00") + "(" + charges[j].ToString() + ")/";									
 					}
-					info = info.Substring(0,info.Length - 1);
+
+					if(info.IndexOf(infoEnv) < 0)
+						info += infoEnv.Substring(0,infoEnv.Length - 1);
 				}
 			}
 
