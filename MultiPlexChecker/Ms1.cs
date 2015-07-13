@@ -81,8 +81,8 @@ namespace MultiPlexChecker
 		// Dictionary of peak indexes, representing its window
 		// for each window, there will be a list of possible envelopes
 		// for each one of the list will have the charge and sum of intensities
-		public Dictionary<int,List<Dictionary<int,Double>>> Envelopes = 
-			new Dictionary<int,List<Dictionary<int,Double>>>();
+		public Dictionary<int,List<Dictionary<int,Envelope>>> Envelopes = 
+			new Dictionary<int,List<Dictionary<int,Envelope>>>();
 
 		public void Run()
 		{
@@ -143,14 +143,14 @@ namespace MultiPlexChecker
 				{
 					// n envelopes for each window
 					// can be interpreted as the probability to have multiplex sample
-					List<Dictionary<int,Double>> envelopes = new List<Dictionary<int,Double>>();
+					List<Dictionary<int,Envelope>> envelopes = new List<Dictionary<int,Envelope>>();
 
 					Double mz = peakWindow [i].Mz;
 					Double intensity = peakWindow [i].Intensity;
 
 					for (var k = i + 1; k < peakWindow.Count - 1; k++) 
 					{
-						Dictionary<int,Double> possEnvelopes = new Dictionary<int, double> ();
+						Dictionary<int,Envelope> possEnvelopes = new Dictionary<int, Envelope> ();
 
 						int maxZ = 5;
 						if (peakWindow [k].Mz <= mz + 1 / maxZ - error)
@@ -165,10 +165,11 @@ namespace MultiPlexChecker
 								mzCheck += nC / z;
 								if (Math.Abs (mzCheck - peakWindow [k].Mz) < error) {
 									if (!possEnvelopes.ContainsKey (z))
-										possEnvelopes [z] = intensity;
+										possEnvelopes [z] = new Envelope(intensity);
 									// give less importance for higher charges(increase probability of noise)
 									// less importance to multiple of the envelope
-									possEnvelopes [z] += peakWindow [k].Intensity / (z * nC);
+									possEnvelopes [z].Intensity += peakWindow [k].Intensity / (z * nC);
+									possEnvelopes [z].Isotopes++;
 									peakWindow [k].EvenlopesIndexes.Add (peakWindow [i].MainIndex);
 								} 
 								// we have much greater chances to have the firsts isotopes
@@ -185,7 +186,7 @@ namespace MultiPlexChecker
 					if (envelopes.Count > 0) 
 					{
 						if(!Envelopes.ContainsKey(TopIndex[j]))
-							Envelopes [TopIndex [j]] = new List<Dictionary<int, double>>();
+							Envelopes [TopIndex [j]] = new List<Dictionary<int, Envelope>>();
 						Envelopes [TopIndex [j]].AddRange(envelopes);
 					}
 				}
@@ -204,4 +205,16 @@ namespace MultiPlexChecker
 		//if this spectrum is considered an envelope for other spectrum
 		public List<int> EvenlopesIndexes = new List<int>();
 	}
+
+	public class Envelope
+	{
+		public double Intensity;
+		public int Isotopes;
+
+		public Envelope(double intensity){
+			Intensity = intensity;
+			Isotopes = 1;
+		}
+	}
+
 }

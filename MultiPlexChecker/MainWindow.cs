@@ -108,7 +108,7 @@ public partial class MainWindow: Gtk.Window
 			Spectrum sp = ms1.Spectra[i];
 			sp.Run();
 			string info = "";
-			foreach(KeyValuePair<int,List<Dictionary<int,Double>>> env in sp.Envelopes)
+			foreach(KeyValuePair<int,List<Dictionary<int,Envelope>>> env in sp.Envelopes)
 			{
 				// main peak
 				SpectrumItem spItem = sp.Peaks[env.Key];
@@ -126,22 +126,26 @@ public partial class MainWindow: Gtk.Window
 					Double total = 0;
 					List<Double> intensities = new List<double>();
 					List<int> charges = new List<int>();
-					foreach(Dictionary<int,Double> envZ in env.Value)
+					List<int> isotopes = new List<int>();
+					foreach(Dictionary<int,Envelope> envZ in env.Value)
 					{
 						// get the greatest intensity
 						Double intensity = 0;
 						int charge = 1;
-						foreach(KeyValuePair<int,Double> zi in envZ)
+						int nIso = 1;
+						foreach(KeyValuePair<int,Envelope> zi in envZ)
 						{
-							if(zi.Value > intensity)
+							if(zi.Value.Intensity > intensity)
 							{
-								intensity = zi.Value;
+								intensity = zi.Value.Intensity;
 								charge = zi.Key;
+								nIso = zi.Value.Isotopes;
 							}
 						}
 						total += intensity;
 						intensities.Add(intensity);
 						charges.Add(charge);
+						isotopes.Add (nIso);
 					}
 
 					Dictionary<int,bool> chargesDic = new Dictionary<int, bool> ();
@@ -149,24 +153,19 @@ public partial class MainWindow: Gtk.Window
 					{
 						if(j % nScanLine == 0)
 							infoEnv += "\n  ";
-						infoEnv += intensities[j].ToString("0.00") + " (" + charges[j].ToString() + ")/";
+						infoEnv += intensities[j].ToString("0.00") + " (z:" + charges[j].ToString() + " n:" + 
+							isotopes[j].ToString() + ") / ";
 						chargesDic [charges [j]] = true;
 					}
 
-					infoEnv = infoEnv.Substring (0, infoEnv.Length - 1);
+					infoEnv = infoEnv.Substring (0, infoEnv.Length - 3);
 					if (info.IndexOf (infoEnv) < 0) {
-						info += infoEnv + "\n    ";
-
-						foreach (KeyValuePair<int,bool> c in chargesDic) {
-							double st = Statistics.CalcProb (spItem.Mz, c.Key);
-							info += "z: " + c.Key + " - " + string.Format ("{0:0.00%}", st) + " / ";
-						}
-						info = info.Substring (0, info.Length - 3);
+						info += infoEnv;
 					}
 				}
 			}
 
-			if(info != "" && info.IndexOf(")/") > 0)
+			if(info != "" && info.IndexOf(") /") > 0)
 				store.AppendValues(i.ToString());
 
 			sp.info = info;
