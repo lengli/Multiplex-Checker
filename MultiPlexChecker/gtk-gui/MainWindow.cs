@@ -97,6 +97,7 @@ public partial class MainWindow
 		this.BorderWidth = ((uint)(3));
 		// Container child MainWindow.Gtk.Container+ContainerChild
 		this.fixed1 = new global::Gtk.Fixed ();
+		this.fixed1.Name = "fixed1";
 		this.fixed1.HasWindow = false;
 		// Container child fixed1.Gtk.Fixed+FixedChild
 		this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='FileAction' action='FileAction'><menuitem name='openAct' action='openAct'/></menu><menu name='AboutAction' action='AboutAction'/></menubar></ui>");

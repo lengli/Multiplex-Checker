@@ -143,15 +143,26 @@ public partial class MainWindow: Gtk.Window
 						intensities.Add(intensity);
 						charges.Add(charge);
 					}
+
+					Dictionary<int,bool> chargesDic = new Dictionary<int, bool> ();
 					for(int j = 0; j < intensities.Count; j++)
 					{
 						if(j % nScanLine == 0)
 							infoEnv += "\n  ";
-						infoEnv += intensities[j].ToString("0.00") + "(" + charges[j].ToString() + ")/";									
+						infoEnv += intensities[j].ToString("0.00") + " (" + charges[j].ToString() + ")/";
+						chargesDic [charges [j]] = true;
 					}
 
-					if(info.IndexOf(infoEnv) < 0)
-						info += infoEnv.Substring(0,infoEnv.Length - 1);
+					infoEnv = infoEnv.Substring (0, infoEnv.Length - 1);
+					if (info.IndexOf (infoEnv) < 0) {
+						info += infoEnv + "\n    ";
+
+						foreach (KeyValuePair<int,bool> c in chargesDic) {
+							double st = Statistics.CalcProb (spItem.Mz, c.Key);
+							info += "z: " + c.Key + " - " + string.Format ("{0:0.00%}", st) + " / ";
+						}
+						info = info.Substring (0, info.Length - 3);
+					}
 				}
 			}
 
