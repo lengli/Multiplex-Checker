@@ -4,13 +4,18 @@ using System.Collections.Generic;
 
 namespace MultiPlexChecker
 {
+	public class TestWindow:Gtk.Window
+	{
+		public TestWindow () : base (Gtk.WindowType.Toplevel){}
+	}
+
 	class MainClass
 	{
 		// Probability tester
 		public static void Main1 (string[] args)
 		{
 			Application.Init ();
-			MainWindow win = new MainWindow();
+			TestWindow win = new TestWindow();
 			win.Title = "Probability Tester";
 
 			VBox vBox = new VBox ();
