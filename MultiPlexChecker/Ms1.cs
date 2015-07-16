@@ -169,10 +169,6 @@ namespace MultiPlexChecker
 
 		public void Run()
 		{
-			// performance prevention
-			// key: [m/z]-[n]
-			Dictionary<string,double> isotopeProbability = new Dictionary<string, double> ();
-
 			TopIndex = new List<int> ();
 			for (int i = 0; i < Peaks.Count; i++) 
 			{
@@ -248,25 +244,15 @@ namespace MultiPlexChecker
 							Double nC = 1;
 							Double mzCheck = mz;
 
-							isotopeProbability [mz.ToString () + "-0"] = Statistics.CalcProb (mz, 0);
 							while (mzCheck < peakWindow [k].Mz) 
 							{
-								string key1 = mz.ToString () + string.Format ("-{0:0}", nC);
-								double p1 = 0;
-								if (isotopeProbability.ContainsKey (key1))
-									p1 = isotopeProbability [key1];
-								else {
-									p1 = Statistics.CalcProb (mz, int.Parse ((nC).ToString()));
-									isotopeProbability [key1] = p1;
-								}
+								Double p1 = Statistics.CalcProb (mz, int.Parse ((nC).ToString()));
 
 								mzCheck += nC / z;
 								if (Math.Abs (mzCheck - peakWindow [k].Mz) < error) {
 									if (!possEnvelopes.ContainsKey (z))
 										possEnvelopes [z] = new Envelope(intensity);
-									// give less importance for higher charges(increase probability of noise)
-									// less importance to multiple of the envelope
-									possEnvelopes [z].Intensity += peakWindow [k].Intensity / (z * nC);
+									possEnvelopes [z].Intensity += peakWindow [k].Intensity;
 									possEnvelopes [z].Isotopes++;
 									possEnvelopes [z].prob = p1;
 									peakWindow [k].EvenlopesIndexes.Add (peakWindow [i].MainIndex);
