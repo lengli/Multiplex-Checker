@@ -261,16 +261,16 @@ namespace MultiPlexChecker
 									// not all cases we have greater chances to have 
 									// firsts isotopes than the last ones (higher multiple)
 
-									double sumP = 0;
-									for (var nC_Comp = nC - 1; nC_Comp >= 0; nC_Comp--) {
-										sumP += isotopeProbability [mz.ToString () + string.Format ("-{0:0}", nC_Comp)];
-									}
+									//double sumP = 0;
+									//for (int nC_Comp = nC - 1; nC_Comp >= 0; nC_Comp--) {
+									//	sumP += Statistics.CalcProb (mz, nC_Comp);
+									//}
 
 									// prob. to not have this isotope only
 									// and to have other higher isotope
-									double pNotHave = 1 - p1 - sumP;
+									//double pNotHave = 1 - p1 - sumP;
 
-									if (pNotHave < DepthSearchProb)
+									//if (pNotHave < DepthSearchProb)
 										break;
 								}
 								nC++;
@@ -307,7 +307,13 @@ namespace MultiPlexChecker
 	{
 		public double Intensity;
 		public int Isotopes;
+		// prob to have this envelope
 		public double prob;
+
+		public List<Double> Intensities = new List<double> ();
+
+		// chances to be correct according to statistics analysis
+		//public double 
 
 		public Envelope(double intensity){
 			Intensity = intensity;
