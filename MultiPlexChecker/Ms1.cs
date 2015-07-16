@@ -6,6 +6,9 @@ namespace MultiPlexChecker
 {
 	public class Ms1
 	{
+		// GUI param
+		private static int nScanLine = 3;
+
 		private StreamReader sr;
 		public List<Spectrum> Spectra = new List<Spectrum>();
 		public string filename;
@@ -14,7 +17,7 @@ namespace MultiPlexChecker
 		{
 		}
 
-		public void Run()
+		public List<int> Run()
 		{
 			sr = new StreamReader (filename);
 			string line = "";
@@ -56,6 +59,83 @@ namespace MultiPlexChecker
 			// add the last one
 			Spectra.Add (temp);
 			sr.Close ();
+
+			// Index with Spectrum that may have multiplex
+			List<int> indexReturn = new List<int> ();
+
+			// build info string
+			for(int i = 0; i < Spectra.Count; i++)
+			{
+				Spectrum sp = Spectra[i];
+				sp.Run();
+				string info = "";
+				foreach(KeyValuePair<int,List<Dictionary<int,Envelope>>> env in sp.Envelopes)
+				{
+					// main peak
+					SpectrumItem spItem = sp.Peaks[env.Key];
+					int nPossEnvelopes = env.Value.Count;
+					string infoEnv = "\nwindow m/z: " + spItem.Mz.ToString();
+					infoEnv += " (" + nPossEnvelopes.ToString() + " env";
+					if(nPossEnvelopes > 1) infoEnv += "s";
+					infoEnv += ")"; 
+
+					//if(spItem.EvenlopesIndexes.Count>0)
+					//	info += " enveloped";
+
+					if(nPossEnvelopes > 1)
+					{
+						Double total = 0;
+						List<Double> intensities = new List<double>();
+						List<int> charges = new List<int>();
+						List<int> isotopes = new List<int>();
+						List<Double> probs = new List<double>();
+						foreach(Dictionary<int,Envelope> envZ in env.Value)
+						{
+							// get the greatest intensity
+							Double intensity = 0;
+							int charge = 1;
+							int nIso = 1;
+							Double prob = 0;
+							foreach(KeyValuePair<int,Envelope> zi in envZ)
+							{
+								if(zi.Value.Intensity > intensity)
+								{
+									intensity = zi.Value.Intensity;
+									charge = zi.Key;
+									nIso = zi.Value.Isotopes;
+									prob = zi.Value.prob;
+								}
+							}
+							total += intensity;
+							intensities.Add(intensity);
+							charges.Add(charge);
+							isotopes.Add (nIso);
+							probs.Add (prob);
+						}
+
+						Dictionary<int,bool> chargesDic = new Dictionary<int, bool> ();
+						for(int j = 0; j < intensities.Count; j++)
+						{
+							if(j % nScanLine == 0)
+								infoEnv += "\n  ";
+							infoEnv += string.Format("{0:0.00} (z:{1} n:{2} p:{3:0.00%}) / ", 
+								intensities[j], charges[j], isotopes[j], probs[j]);
+							chargesDic [charges [j]] = true;
+						}
+
+						infoEnv = infoEnv.Substring (0, infoEnv.Length - 3);
+						if (info.IndexOf (infoEnv) < 0) {
+							info += infoEnv;
+						}
+					}
+				}
+
+				if(info != "" && info.IndexOf(") /") > 0)
+					indexReturn.Add(i);
+
+				sp.info = info;
+			}
+			return indexReturn;
 		}
 	}
 
@@ -67,6 +147,9 @@ namespace MultiPlexChecker
 		public static Double BackWindow = 0.5;
 		// to cut down noise spectrum
 		public static Double Threshold = 0;
+
+		// prob which it should stop searching for isotpes with higher masses
+		public static Double DepthSearchProb = 0.3;
 
 		public string info = "";
 
@@ -86,6 +169,10 @@ namespace MultiPlexChecker
 
 		public void Run()
 		{
+			// performance prevention
+			// key: [m/z]-[n]
+			Dictionary<string,double> isotopeProbability = new Dictionary<string, double> ();
+
 			TopIndex = new List<int> ();
 			for (int i = 0; i < Peaks.Count; i++) 
 			{
@@ -160,8 +247,19 @@ namespace MultiPlexChecker
 						{
 							Double nC = 1;
 							Double mzCheck = mz;
+
+							isotopeProbability [mz.ToString () + "-0"] = Statistics.CalcProb (mz, 0);
 							while (mzCheck < peakWindow [k].Mz) 
 							{
+								string key1 = mz.ToString () + string.Format ("-{0:0}", nC);
+								double p1 = 0;
+								if (isotopeProbability.ContainsKey (key1))
+									p1 = isotopeProbability [key1];
+								else {
+									p1 = Statistics.CalcProb (mz, int.Parse ((nC).ToString()));
+									isotopeProbability [key1] = p1;
+								}
+
 								mzCheck += nC / z;
 								if (Math.Abs (mzCheck - peakWindow [k].Mz) < error) {
 									if (!possEnvelopes.ContainsKey (z))
@@ -170,12 +268,25 @@ namespace MultiPlexChecker
 									// less importance to multiple of the envelope
 									possEnvelopes [z].Intensity += peakWindow [k].Intensity / (z * nC);
 									possEnvelopes [z].Isotopes++;
+									possEnvelopes [z].prob = p1;
 									peakWindow [k].EvenlopesIndexes.Add (peakWindow [i].MainIndex);
 								} 
-								// we have much greater chances to have the firsts isotopes
-								// than the last one (higher multiple)
-								else
-									break;
+								else{
+									// not all cases we have greater chances to have 
+									// firsts isotopes than the last ones (higher multiple)
+
+									double sumP = 0;
+									for (var nC_Comp = nC - 1; nC_Comp >= 0; nC_Comp--) {
+										sumP += isotopeProbability [mz.ToString () + string.Format ("-{0:0}", nC_Comp)];
+									}
+
+									// prob. to not have this isotope only
+									// and to have other higher isotope
+									double pNotHave = 1 - p1 - sumP;
+
+									if (pNotHave < DepthSearchProb)
+										break;
+								}
 								nC++;
 							}
 						}
@@ -210,6 +321,7 @@ namespace MultiPlexChecker
 	{
 		public double Intensity;
 		public int Isotopes;
+		public double prob;
 
 		public Envelope(double intensity){
 			Intensity = intensity;

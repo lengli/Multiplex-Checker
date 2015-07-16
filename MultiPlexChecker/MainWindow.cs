@@ -9,9 +9,6 @@ public partial class MainWindow: Gtk.Window
 	private Ms1 ms1;
 	private string filename = "";
 
-	// GUI param
-	private static int nScanLine = 6;
-
 	public MainWindow () : base (Gtk.WindowType.Toplevel)
 	{
 		//this.UIManager.AddUiFromString ("<ui><menubar name='menubar1'><menu name='FileAction' action='FileAction'><menuitem name='openAct' action='openAct'/></menu><menu name='AboutAction' action='AboutAction'/></menubar></ui>");
@@ -47,128 +44,70 @@ public partial class MainWindow: Gtk.Window
 
 	private void RunClicked(object sender, EventArgs e)
 	{
-		// Entries validation
-		ErrorLbl.Text = "";
+		try{
+			// Entries validation
+			ErrorLbl.Text = "";
 
-		if(LeftWindowEntry.Text != ""){
-			double t;
-			if (!double.TryParse (LeftWindowEntry.Text.Replace(',' ,'.') , out t)) {
-				ErrorLbl.Text = "Insert a valid Real for Left Window Size";
-				return;
-			}
-			Spectrum.BackWindow = t;
-		}
-
-		if(RightWindowEntry.Text != ""){
-			double t;
-			if (!double.TryParse (RightWindowEntry.Text.Replace(',' ,'.') , out t)) {
-				ErrorLbl.Text = "Insert a valid Real for Right Window Size";
-				return;
-			}
-			Spectrum.FrontWindow = t;
-		}
-
-		if(ThresholdEntry.Text != ""){
-			double t;
-			if (!double.TryParse (ThresholdEntry.Text.Replace(',' ,'.') , out t)) {
-				ErrorLbl.Text = "Insert a valid Real for Threshold";
-				return;
-			}
-			Spectrum.Threshold = t;
-		}
-
-		if(TopPeaksEntry.Text != ""){
-			int tp;
-			if (!int.TryParse (TopPeaksEntry.Text, out tp)) {
-				ErrorLbl.Text = "Insert a valid integer on Top Peaks";
-				return;
-			}
-			Spectrum.TopPeak = tp;
-		}
-
-		if (filename == "") {
-			ErrorLbl.Text = "Choose a file";
-			return;			
-		}
-
-		ms1 = new Ms1();
-		ms1.filename = filename;
-		ms1.Run ();
-		nSpecLbl.Text = ms1.Spectra.Count.ToString();
-
-		mtpxCombo.Clear();
-		CellRendererText cell = new CellRendererText();
-		mtpxCombo.PackStart(cell, false);
-		mtpxCombo.AddAttribute(cell, "text", 0);
-		ListStore store = new ListStore(typeof (string));
-		mtpxCombo.Model = store;
-
-		for(int i = 0; i < ms1.Spectra.Count; i++)
-		{
-			Spectrum sp = ms1.Spectra[i];
-			sp.Run();
-			string info = "";
-			foreach(KeyValuePair<int,List<Dictionary<int,Envelope>>> env in sp.Envelopes)
-			{
-				// main peak
-				SpectrumItem spItem = sp.Peaks[env.Key];
-				int nPossEnvelopes = env.Value.Count;
-				string infoEnv = "\nm/z: " + spItem.Mz.ToString();
-				infoEnv += " (" + nPossEnvelopes.ToString() + " env";
-				if(nPossEnvelopes > 1) infoEnv += "s";
-				infoEnv += ")"; 
-
-				//if(spItem.EvenlopesIndexes.Count>0)
-				//	info += " enveloped";
-
-				if(nPossEnvelopes > 1)
-				{
-					Double total = 0;
-					List<Double> intensities = new List<double>();
-					List<int> charges = new List<int>();
-					List<int> isotopes = new List<int>();
-					foreach(Dictionary<int,Envelope> envZ in env.Value)
-					{
-						// get the greatest intensity
-						Double intensity = 0;
-						int charge = 1;
-						int nIso = 1;
-						foreach(KeyValuePair<int,Envelope> zi in envZ)
-						{
-							if(zi.Value.Intensity > intensity)
-							{
-								intensity = zi.Value.Intensity;
-								charge = zi.Key;
-								nIso = zi.Value.Isotopes;
-							}
-						}
-						total += intensity;
-						intensities.Add(intensity);
-						charges.Add(charge);
-						isotopes.Add (nIso);
-					}
-
-					Dictionary<int,bool> chargesDic = new Dictionary<int, bool> ();
-					for(int j = 0; j < intensities.Count; j++)
-					{
-						if(j % nScanLine == 0)
-							infoEnv += "\n  ";
-						infoEnv += intensities[j].ToString("0.00") + " (z:" + charges[j].ToString() + " n:" + 
-							isotopes[j].ToString() + ") / ";
-						chargesDic [charges [j]] = true;
-					}
-
-					infoEnv = infoEnv.Substring (0, infoEnv.Length - 3);
-					if (info.IndexOf (infoEnv) < 0) {
-						info += infoEnv;
-					}
+			if(LeftWindowEntry.Text != ""){
+				double t;
+				if (!double.TryParse (LeftWindowEntry.Text.Replace(',' ,'.') , out t)) {
+					ErrorLbl.Text = "Insert a valid Real for Left Window Size";
+					return;
 				}
+				Spectrum.BackWindow = t;
 			}
 
-			if(info != "" && info.IndexOf(") /") > 0)
-				store.AppendValues(i.ToString());
+			if(RightWindowEntry.Text != ""){
+				double t;
+				if (!double.TryParse (RightWindowEntry.Text.Replace(',' ,'.') , out t)) {
+					ErrorLbl.Text = "Insert a valid Real for Right Window Size";
+					return;
+				}
+				Spectrum.FrontWindow = t;
+			}
 
-			sp.info = info;
+			if(ThresholdEntry.Text != ""){
+				double t;
+				if (!double.TryParse (ThresholdEntry.Text.Replace(',' ,'.') , out t)) {
+					ErrorLbl.Text = "Insert a valid Real for Threshold";
+					return;
+				}
+				Spectrum.Threshold = t;
+			}
+
+			if(TopPeaksEntry.Text != ""){
+				int tp;
+				if (!int.TryParse (TopPeaksEntry.Text, out tp)) {
+					ErrorLbl.Text = "Insert a valid integer on Top Peaks";
+					return;
+				}
+				Spectrum.TopPeak = tp;
+			}
+
+			if (filename == "") {
+				ErrorLbl.Text = "Choose a file";
+				return;			
+			}
+
+			ms1 = new Ms1();
+			ms1.filename = filename;
+			List<int> indexes = ms1.Run ();
+			nSpecLbl.Text = ms1.Spectra.Count.ToString();
+
+			mtpxCombo.Clear();
+			CellRendererText cell = new CellRendererText();
+			mtpxCombo.PackStart(cell, false);
+			mtpxCombo.AddAttribute(cell, "text", 0);
+			ListStore store = new ListStore(typeof (string));
+			mtpxCombo.Model = store;
+
+			for(var i = 0; i < indexes.Count; i++)
+				store.AppendValues(indexes[i].ToString());
+
+		}
+		catch(Exception ex){
+			new Dialog ("Error", this, DialogFlags.Modal,
+				"OK",ResponseType.Close);
 		}
 	}
 
@@ -188,10 +127,5 @@ public partial class MainWindow: Gtk.Window
 		}
 
 		filechooser.Destroy();
-	}
-
-	private void on_dialog_response (object obj, ResponseArgs args)
-	{
-		Console.WriteLine (args.ResponseId);
 	}
 }
