@@ -6,15 +6,15 @@ namespace MultiPlexChecker
 	public static class Statistics
 	{
 		// Weighted average mass
-		public static Double avgMass = 112.0789;
+		private static Double avgMass = 112.0789;
 
 		// prob n daltons per peptide
-		public static Double p0 = 0.937403;
-		public static Double p1 = 0.056;
-		public static Double p2 = 0.006292;
-		public static Double p3 = 0.000286;
-		public static Double p4 = 1.486E-5;
-		public static Double p5 = 7.85E-7;
+		private static Double p0 = 0.937403;
+		private static Double p1 = 0.056;
+		private static Double p2 = 0.006292;
+		private static Double p3 = 0.000286;
+		private static Double p4 = 1.486E-5;
+		private static Double p5 = 7.85E-7;
 
 		public static Double CalcProb(Double mass, int isotopen)
 		{
@@ -65,8 +65,8 @@ namespace MultiPlexChecker
 			Double res3 = Math.Pow (p1, n1);
 			res3 *= Math.Pow (p2, n2);
 			res3 *= Math.Pow (p3, n3);
-			res3 *= Math.Pow (p3, n4);
-			res3 *= Math.Pow (p3, n5);
+			res3 *= Math.Pow (p4, n4);
+			res3 *= Math.Pow (p5, n5);
 			int sum = n1 + n2 + n3 + n4 + n5;
 			res3 *= Math.Pow (p0, nPep - sum);
 			res3 *= Combination (sum, nPep);
